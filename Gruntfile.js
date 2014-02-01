@@ -3,10 +3,8 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     watch: {
-      all: {
-        options: { livereload: true },
-        files: ['app/**/*.js'],
-        tasks: ['jshint'],
+      options: {
+        livereload: true,
       },
       emberTemplates: {
         files: 'app/templates/**/*.handlebars',
@@ -16,8 +14,7 @@ module.exports = function(grunt) {
         files:  [ 'index.html', 'server.js' ],
         tasks:  [ 'express:dev' ],
         options: {
-          nospawn: true, // Without this option specified express won't be reloaded
-          livereload: true
+          spawn: false // Without this option specified express won't be reloaded
         }
       }
     },
@@ -57,5 +54,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['express:dev', 'watch']);
+  grunt.registerTask('default', ['emberTemplates', 'jshint', 'express:dev','watch']);
 };
