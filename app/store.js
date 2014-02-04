@@ -1,1 +1,6 @@
-App.ApplicationAdapter = DS.FixtureAdapter;
+DS.RESTAdapter.reopen({
+  namespace: 'api'
+});
+App.ApplicationAdapter = DS.RESTAdapter();
+
+//namespace: 'api
