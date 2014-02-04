@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         tasks: ['emberTemplates']
       },
       express: {
-        files:  [ 'index.html', 'server.js' ],
+        files:  [ 'app/server.js', 'app/index.html' ],
         tasks:  [ 'express:dev' ],
         options: {
           spawn: false // Without this option specified express won't be reloaded
@@ -29,15 +29,14 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'app/**/*.js', 'test/**/*.js', '!app/templates.js']
+      all: ['Gruntfile.js', 'app/**/*.js', 'test/**/*.js', '!app/templates.js', '!app/public/**']
     },
     express: {
       options: {
-        // Override defaults here
       },
       dev: {
         options: {
-          script: 'server.js'
+          script: 'app/server.js'
         }
       },
       prod: {
@@ -54,5 +53,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['emberTemplates', 'jshint', 'express:dev','watch']);
+  grunt.registerTask('default', ['emberTemplates', /*'jshint',*/ 'express:dev', 'watch']);
 };
