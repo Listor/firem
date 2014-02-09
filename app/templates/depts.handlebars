@@ -1,3 +1,3 @@
 {{#each call in model}}
-  {{call.id}}<br>
+  {{#link-to 'call' call}}{{call.id}}{{/link-to}}<br>
 {{/each}}
