@@ -8,4 +8,5 @@ App.FireCall = Ember.Model.extend({
 });
 
 App.FireCall.url = "/api/calls";
+App.FireCall.primaryKey = '_id';
 App.FireCall.adapter = Ember.RESTAdapter.create();
