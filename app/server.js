@@ -6,30 +6,30 @@ var calls = [
   {
     "dept" : "HFD",
     "datetime" : new Date("2013-01-27T03:38:12Z"),
-    "_id" : "HFD_01-26-2013_2138-12",
-    "location": {
-      "latitude": 90,
-      "longitude": 90
-    }
+    "id" : "HFD_01-26-2013_2138-12",
+    "location": [90,90]
   },
   {
     "dept" : "HFD",
     "datetime" : new Date("2013-01-26T19:38:38Z"),
-    "_id" : "HFD_01-26-2013_1338-38"
+    "id" : "HFD_01-26-2013_1338-38",
+    "location": [85,90]
   },
   {
     "dept" : "HFD",
     "datetime" : new Date("2014-01-01T17:14:19Z"),
-    "_id" : "HFD_01-01-2014_1114-19"
+    "id" : "HFD_01-01-2014_1114-19",
+    "location": [90,85]
   },
   {
     "dept" : "WFD",
     "datetime" : new Date("2014-17-01T17:14:19Z"),
-    "_id" : "WFD-01-2014_1114-19"
+    "id" : "WFD-01-17-2014_1114-19",
+    "location": [91,91]
   }
 ];
 
-var calls_by_id = _.indexBy(calls, '_id');
+var calls_by_id = _.indexBy(calls, 'id');
 
 app.use(express.static(process.cwd() + '/app'));
 app.use('/assets', express.static(process.cwd() + '/app/public'));

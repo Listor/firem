@@ -21,6 +21,9 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
   data.buffer.push(escapeExpression((helper = helpers.callDate || (depth0 && depth0.callDate),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data},helper ? helper.call(depth0, "datetime", options) : helperMissing.call(depth0, "callDate", "datetime", options))));
+  data.buffer.push("\n");
+  stack1 = helpers._triageMustache.call(depth0, "id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\nLat: ");
   stack1 = helpers._triageMustache.call(depth0, "location.latitude", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
@@ -85,7 +88,7 @@ function program1(depth0,data) {
 function program2(depth0,data) {
   
   var stack1;
-  stack1 = helpers._triageMustache.call(depth0, "call._id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers._triageMustache.call(depth0, "call.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   else { data.buffer.push(''); }
   }
@@ -114,7 +117,7 @@ function program1(depth0,data) {
 function program2(depth0,data) {
   
   var stack1;
-  stack1 = helpers._triageMustache.call(depth0, "call._id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers._triageMustache.call(depth0, "call.id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   else { data.buffer.push(''); }
   }
