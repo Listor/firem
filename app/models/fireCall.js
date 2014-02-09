@@ -1,10 +1,6 @@
 App.FireCall = Ember.Model.extend({
   'dept'    : Ember.attr('string'),
-  'datetime': Ember.attr('date')//,
-  // 'location': {
-  //   'latitude'  : DS.attr('number'),
-  //   'longitude' : DS.attr('number')
-  // }
+  'datetime': Ember.attr('date')
 });
 
 App.FireCall.url = "/api/calls";

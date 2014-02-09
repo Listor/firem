@@ -27,3 +27,8 @@ function groupBy(groupBy) {
 App.CallsController = Ember.ArrayController.extend({
   grouped: groupBy('dept')
 });
+
+App.CallsIndexController = Ember.ArrayController.extend({
+  sortProperties: ['datetime'],
+  sortAscending: false
+});
