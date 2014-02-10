@@ -12,11 +12,11 @@ var latLong = {
 };
 
 App.FireCall = Ember.Model.extend({
-  'dept'    : Ember.attr('string'),
-  'datetime': Ember.attr('date'),
+  'dept'    : Ember.attr(),
+  'datetime': Ember.attr(Date),
   'location': Ember.attr(latLong) 
 });
 
 App.FireCall.adapter = Ember.RESTAdapter.create();
 App.FireCall.url = "/api/calls";
-// App.FireCall.primaryKey = '_id';
+App.FireCall.primaryKey = '_id';
