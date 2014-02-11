@@ -14,7 +14,8 @@ var latLong = {
 App.FireCall = Ember.Model.extend({
   'dept'    : Ember.attr(),
   'datetime': Ember.attr(Date),
-  'location': Ember.attr(latLong) 
+  'location': Ember.attr(latLong),
+  'comments': Ember.attr()
 });
 
 App.FireCall.adapter = Ember.RESTAdapter.create();

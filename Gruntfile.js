@@ -10,6 +10,10 @@ module.exports = function(grunt) {
         files: 'app/templates/**/*.handlebars',
         tasks: ['emberTemplates']
       },
+      jshint: {
+        files:  [ 'app/**/*.js', '!app/server.js', '!app/templates.js' ],
+        task:   [ 'jshint' ]
+      },
       express: {
         files:  [ 'app/server.js', 'app/index.html' ],
         tasks:  [ 'express:dev' ],

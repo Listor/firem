@@ -1,4 +1,19 @@
-Departments
-{{#each call in controller.arrangedContent}}
-  {{#link-to 'call' call._id}}{{call._id}}{{/link-to}}<br>
-{{/each}}
+<h1>{{department}}</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each call in controller.arrangedContent}}
+      <tr>
+        <td>{{#link-to 'call' call._id}}{{call._id}}{{/link-to}}</td>
+        <td>{{fdate call.datetime "MMM DD, YYYY"}}</td>
+        <td>{{call.comments}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
