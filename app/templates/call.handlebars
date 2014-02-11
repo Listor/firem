@@ -1,5 +1,17 @@
-{{dept}}
-{{callDate datetime}}
-{{id}}
-Lat: {{location.latitude}}
+{{dept}}<br>
+{{callDate datetime}}<br>
+{{id}}<br>
+{{#if isEditing}}
+  {{input value=comments}}<br>
+{{else}}
+  {{comments}}<br>
+{{/if}}
+
+Lat: {{location.latitude}} 
 Long: {{location.longitude}}
+<hr>
+{{#if isEditing}}
+  <button {{action 'saveCall'}}>Save</button>
+{{else}}
+  <button {{action 'startEditing'}}>Edit</button>
+{{/if}}
