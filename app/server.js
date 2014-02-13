@@ -1,35 +1,28 @@
 var express = require('express');
   app = express(),
-  _ = require('lodash');
+  _ = require('lodash'),
+  mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/fire');
 
-var calls = [
-  {
-    "dept" : "HFD",
-    "datetime" : new Date("2013-01-27T03:38:12Z"),
-    "_id" : "HFD_01-26-2013_2138-12",
-    "location": [90,90]
-  },
-  {
-    "dept" : "HFD",
-    "datetime" : new Date("2013-01-26T19:38:38Z"),
-    "_id" : "HFD_01-26-2013_1338-38",
-    "location": [85,90]
-  },
-  {
-    "dept" : "HFD",
-    "datetime" : new Date("2014-01-01T17:14:19Z"),
-    "_id" : "HFD_01-01-2014_1114-19",
-    "location": [90,85]
-  },
-  {
-    "dept" : "WFD",
-    "datetime" : new Date("2014-01-17T17:14:19Z"),
-    "_id" : "WFD-01-17-2014_1114-19",
-    "location": [91,91]
-  }
-];
 
-var calls_by_id = _.indexBy(calls, '_id');
+var Schema = mongoose.Schema;  
+
+var Call = new Schema({
+    _id       : { type: String, required: true },
+    dept      : { type: String, required: true },  
+    datetime  : { type: Date, required: true },  
+    location  : { type: [ Number ], index: '2d' },
+    address   : {
+      street  : { type: String },
+      city    : { type: String },
+      state   : { type: String },
+      zip     : { type: String }
+    },
+    comments  : { type: String },
+    tags      : { type: [ String ] }
+});
+
+var CallModel = mongoose.model('Call', Call);  
 
 app.use(express.static(process.cwd() + '/app'));
 app.use('/assets', express.static(process.cwd() + '/app/public'));
@@ -39,11 +32,37 @@ app.get('/api', function(req, res){
 });
 
 app.get('/api/calls', function(req, res){
-  res.send(calls);
+  return CallModel.find(function (err, calls) {
+    if (!err) {
+      return res.send(calls);
+    } else {
+      return console.log(err);
+    }
+  });
 });
 
 app.get('/api/calls/:id', function(req, res){
-  res.send(calls_by_id[req.params.id]);
+  return CallModel.findById(req.params.id, function (err, call) {
+    if (!err) {
+      return res.send(call);
+    } else {
+      return console.log(err);
+    }
+  });
+});
+
+app.put('/api/calls/:id', function(req, res){
+  return CallModel.findById(req.params.id, function(err, call) {
+    call.comments = req.body.comments;
+    return call.save(function (err) {
+      if (!err) {
+        console.log("updated");
+      } else {
+        console.log(err);
+      }
+      return res.send(call);
+    });
+  });
 });
 
 app.get('/', function(req, res) {
