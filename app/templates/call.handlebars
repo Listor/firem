@@ -2,13 +2,14 @@
 {{callDate datetime}}<br>
 {{id}}<br>
 {{#if isEditing}}
-  {{input value=comments}}<br>
+  Lat: {{input value=loc.latitude}}<br>
+  Long: {{input value=loc.longitude}}<br>
+  Comments: {{input value=comments}}<br>
 {{else}}
-  {{comments}}<br>
+  Lat: {{loc.latitude}}<br>
+  Long: {{loc.longitude}}<br>
+  Comments: {{comments}}<br>
 {{/if}}
-
-Lat: {{location.latitude}} 
-Long: {{location.longitude}}
 <hr>
 {{#if isEditing}}
   <button {{action 'saveCall'}}>Save</button>

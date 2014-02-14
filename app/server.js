@@ -11,7 +11,7 @@ var Call = new Schema({
     _id       : { type: String, required: true },
     dept      : { type: String, required: true },  
     datetime  : { type: Date, required: true },  
-    location  : { type: [ Number ], index: '2d' },
+    loc       : { type: { type: String}, coordinates:[]},
     address   : {
       street  : { type: String },
       city    : { type: String },
@@ -21,9 +21,11 @@ var Call = new Schema({
     comments  : { type: String },
     tags      : { type: [ String ] }
 });
-
+Call.index({ location: '2dsphere' });
 var CallModel = mongoose.model('Call', Call);  
 
+app.use(express.bodyParser());
+app.use(express.methodOverride());
 app.use(express.static(process.cwd() + '/app'));
 app.use('/assets', express.static(process.cwd() + '/app/public'));
 
@@ -32,7 +34,7 @@ app.get('/api', function(req, res){
 });
 
 app.get('/api/calls', function(req, res){
-  return CallModel.find(function (err, calls) {
+  return CallModel.find().sort({'datetime': -1}).find(function (err, calls) {
     if (!err) {
       return res.send(calls);
     } else {
@@ -51,9 +53,12 @@ app.get('/api/calls/:id', function(req, res){
   });
 });
 
-app.put('/api/calls/:id', function(req, res){
+app.put('/api/calls/:id', function(req, res) {
+  console.log('in put');
+  console.log(req.body);
   return CallModel.findById(req.params.id, function(err, call) {
     call.comments = req.body.comments;
+    call.loc      = req.body.loc;
     return call.save(function (err) {
       if (!err) {
         console.log("updated");
