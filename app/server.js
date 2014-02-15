@@ -28,6 +28,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.static(process.cwd() + '/app'));
 app.use('/assets', express.static(process.cwd() + '/app/public'));
+app.use('/files', express.static('/Users/ryanhirsch/src/web/ember-firelog/calls'));
 
 app.get('/api', function(req, res){
   res.send('{version: 0.1}');

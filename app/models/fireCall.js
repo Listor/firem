@@ -6,7 +6,6 @@ var GeoPoint = {
     };
   },
   deserialize: function(obj) {
-    console.log(obj);
     if(obj) {
       return {
         "longitude": obj.coordinates[0],

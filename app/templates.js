@@ -19,25 +19,27 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = '', helper, options;
-  data.buffer.push("\n  Lat: ");
+  data.buffer.push("\n  <div class=\"row\">\n    <div class=\"large-3 columns\">\n       <label for=\"latitude\" class=\"right inline\">Latitude</label>\n    </div>\n    <div class=\"large-3 columns\">\n      ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'value': ("loc.latitude")
-  },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("<br>\n  Long: ");
+    'value': ("loc.latitude"),
+    'id': ("latitude")
+  },hashTypes:{'value': "ID",'id': "STRING"},hashContexts:{'value': depth0,'id': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n    </div>\n    <div class=\"large-3 columns\">\n      <label for=\"longitude\" class=\"right inline\">Longitude</label>\n    </div>\n    <div class=\"large-3 columns\">\n      ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'value': ("loc.longitude")
-  },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("<br>\n  Comments: ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'value': ("loc.longitude"),
+    'id': ("longitude")
+  },hashTypes:{'value': "ID",'id': "STRING"},hashContexts:{'value': depth0,'id': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"large-3 columns\">\n       <label for=\"latitude\" class=\"right inline\">Comments</label>\n    </div>\n    <div class=\"large-9 columns\">\n      ");
+  data.buffer.push(escapeExpression((helper = helpers.textarea || (depth0 && depth0.textarea),options={hash:{
     'value': ("comments")
-  },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("<br>\n");
+  },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "textarea", options))));
+  data.buffer.push("\n    </div>\n  </div>\n");
   return buffer;
   }
 
 function program3(depth0,data) {
   
-  var buffer = '', stack1;
+  var buffer = '', stack1, helper, options;
   data.buffer.push("\n  Lat: ");
   stack1 = helpers._triageMustache.call(depth0, "loc.latitude", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
@@ -47,42 +49,59 @@ function program3(depth0,data) {
   data.buffer.push("<br>\n  Comments: ");
   stack1 = helpers._triageMustache.call(depth0, "comments", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("<br>\n");
+  data.buffer.push("<br>\n  <audio ");
+  data.buffer.push(escapeExpression((helper = helpers.bindAttr || (depth0 && depth0.bindAttr),options={hash:{
+    'src': ("filepath")
+  },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "bindAttr", options))));
+  data.buffer.push(" controls=\"controls\">\n    Your browser does not support the <code>audio</code> element.\n  </audio>\n");
   return buffer;
   }
 
 function program5(depth0,data) {
   
   var buffer = '';
-  data.buffer.push("\n  <button ");
+  data.buffer.push("\n      <div class=\"right\">\n        <button ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "saveCall", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(">Save</button>\n");
+  data.buffer.push(" class=\"success\">Save</button>\n        <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "stopEditing", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(" class=\"secondary\">Cancel</button>\n      </div>\n    ");
   return buffer;
   }
 
 function program7(depth0,data) {
   
   var buffer = '';
-  data.buffer.push("\n  <button ");
+  data.buffer.push("\n      <button ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "startEditing", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(">Edit</button>\n");
+  data.buffer.push(" class=\"right\">Edit</button>\n    ");
   return buffer;
   }
 
+  data.buffer.push("<div class=\"row\">\n  <div class=\"large-8 columns\">\n    <h2>");
   stack1 = helpers._triageMustache.call(depth0, "dept", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("<br>\n");
+  data.buffer.push(": ");
+  data.buffer.push(escapeExpression((helper = helpers.fdate || (depth0 && depth0.fdate),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data},helper ? helper.call(depth0, "datetime", "MM/DD/YY HH:mm:ss", options) : helperMissing.call(depth0, "fdate", "datetime", "MM/DD/YY HH:mm:ss", options))));
+  data.buffer.push("</h2>\n  </div>\n  <div class=\"large-4 columns\">\n    <h3 class=\"subheader right\">");
   data.buffer.push(escapeExpression((helper = helpers.callDate || (depth0 && depth0.callDate),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data},helper ? helper.call(depth0, "datetime", options) : helperMissing.call(depth0, "callDate", "datetime", options))));
-  data.buffer.push("<br>\n");
-  stack1 = helpers._triageMustache.call(depth0, "id", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("<br>\n");
+  data.buffer.push("</h3>\n  </div>\n</div>\n\n");
   stack1 = helpers['if'].call(depth0, "isEditing", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n<hr>\n");
+  data.buffer.push("\n<hr>\n<div class=\"row\">\n  <div class=\"large-12 columns\">\n    ");
   stack1 = helpers['if'].call(depth0, "isEditing", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(7, program7, data),fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n  </div>\n</div>");
   return buffer;
+  
+});
+
+Ember.TEMPLATES["call/edit"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  
+
+
+  data.buffer.push("<h1>TEST</h1>");
   
 });
 
