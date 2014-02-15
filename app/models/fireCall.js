@@ -25,7 +25,12 @@ App.FireCall = Ember.Model.extend({
   'dept'    : Ember.attr(),
   'datetime': Ember.attr(Date),
   'loc': Ember.attr(GeoPoint),
-  'comments': Ember.attr()
+  'comments': Ember.attr(),
+  'tags': Ember.attr(Array)
+});
+
+App.Tag = Ember.Model.extend({
+  'name'    : Ember.attr()
 });
 
 App.FireCall.adapter = Ember.RESTAdapter.create();

@@ -34,6 +34,11 @@
   Lat: {{loc.latitude}}<br>
   Long: {{loc.longitude}}<br>
   Comments: {{comments}}<br>
+  <ul>
+    {{#each tags}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
   <audio {{bindAttr src=filepath }} controls="controls">
     Your browser does not support the <code>audio</code> element.
   </audio>
