@@ -12,6 +12,10 @@ App.CallController = Ember.ObjectController.extend({
     },
     saveCall: function() {
       var call = this.get('model');
+      debugger;
+      if(call.get('address.isDirty') || call.get('location.isDirty')) {
+        call.set('isDirty', true);
+      }
       call.save();
       this.set('isEditing', false);
       this.transitionToRoute('call', call._id);

@@ -34,10 +34,20 @@ app.get('/api', function(req, res){
   res.send('{version: 0.1}');
 });
 
+var callTransform = function(thisCall) {
+  var location = thisCall.loc.coordinates;
+  thisCall.loc = {
+    "longitude" : location[0],
+    "latitude"  : location[1]
+  };
+
+  return thisCall;
+};
+
 app.get('/api/calls', function(req, res){
   return CallModel.find().sort({'datetime': -1}).find(function (err, calls) {
     if (!err) {
-      return res.send(calls);
+      return res.send(calls.map(callTransform));
     } else {
       return console.log(err);
     }
@@ -47,7 +57,7 @@ app.get('/api/calls', function(req, res){
 app.get('/api/calls/:id', function(req, res){
   return CallModel.findById(req.params.id, function (err, call) {
     if (!err) {
-      return res.send(call);
+      return res.send(callTransform(call));
     } else {
       return console.log(err);
     }
@@ -59,7 +69,11 @@ app.put('/api/calls/:id', function(req, res) {
   console.log(req.body);
   return CallModel.findById(req.params.id, function(err, call) {
     call.comments = req.body.comments;
-    call.loc      = req.body.loc;
+    call.address  = req.body.address;
+    call.loc      = {
+      "type"        : "Point",
+      "coordinates" : [req.body.loc.longitude, req.body.loc.latitude]
+    };
     return call.save(function (err) {
       if (!err) {
         console.log("updated");

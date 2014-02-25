@@ -9,30 +9,70 @@
 
 {{#if isEditing}}
   <div class="row">
-    <div class="large-3 columns">
+    <div class="large-2 columns">
        <label for="latitude" class="right inline">Latitude</label>
     </div>
     <div class="large-3 columns">
-      {{input value=loc.latitude id="latitude"}}
+      {{input value=location.latitude id="latitude"}}
     </div>
-    <div class="large-3 columns">
+    <div class="large-2 columns">
       <label for="longitude" class="right inline">Longitude</label>
     </div>
     <div class="large-3 columns">
-      {{input value=loc.longitude id="longitude"}}
+      {{input value=location.longitude id="longitude"}}
+    </div>
+    <div class="large-2 columns">
+      <div class="right">
+        <button class="tiny">Geocode</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-2 columns">
+      <label for="street" class="right inline">Street</label>
+    </div>
+    <div class="large-10 columns">
+      {{input value=address.street id="street"}}
     </div>
   </div>
   <div class="row">
+    <div class="columns large-2">
+      <label for="city" class="right inline">City</label>
+    </div>
     <div class="large-3 columns">
+      {{input value=address.city id="city"}}
+    </div>
+    <div class="large-1 columns">
+      <select>
+        <option value="IL">IL</option>
+        <option value="MO">MO</option>
+      </select>
+    </div>
+    <div class="columns large-1">
+      <label for="zip" class="right inline">Zip</label>
+    </div>
+    <div class="large-2 columns">
+      {{input value=address.zip id="zip"}}
+    </div>
+    <div class="large-3 columns">
+      <div class="right">
+        <button class="tiny">Reverse Geocode</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-2 columns">
        <label for="latitude" class="right inline">Comments</label>
     </div>
-    <div class="large-9 columns">
+    <div class="large-10 columns">
       {{textarea value=comments}}
     </div>
   </div>
 {{else}}
-  Lat: {{loc.latitude}}<br>
-  Long: {{loc.longitude}}<br>
+  Lat: {{location.latitude}}<br>
+  Long: {{location.longitude}}<br>
   Comments: {{comments}}<br>
   <ul>
     {{#each tags}}
@@ -42,6 +82,7 @@
   <audio {{bindAttr src=filepath }} controls="controls">
     Your browser does not support the <code>audio</code> element.
   </audio>
+  {{isDirty}}
 {{/if}}
 <hr>
 <div class="row">
