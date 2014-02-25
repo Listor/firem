@@ -1,7 +1,8 @@
 var express = require('express');
   app = express(),
   _ = require('lodash'),
-  mongoose = require('mongoose');
+  mongoose = require('mongoose'),
+  extend = require('util')._extend;
 mongoose.connect('mongodb://localhost/fire');
 
 
@@ -34,14 +35,16 @@ app.get('/api', function(req, res){
   res.send('{version: 0.1}');
 });
 
-var callTransform = function(thisCall) {
-  var location = thisCall.loc.coordinates;
-  thisCall.loc = {
-    "longitude" : location[0],
-    "latitude"  : location[1]
+var callTransform = function(call) {
+  var plainCall = call.toObject();
+  var location = call.loc.coordinates;
+  var mappedLocation = {
+    "longitude" : parseInt(location[0]),
+    "latitude"  : parseInt(location[1])
   };
 
-  return thisCall;
+  plainCall.loc = mappedLocation;
+  return plainCall;
 };
 
 app.get('/api/calls', function(req, res){
