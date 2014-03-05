@@ -39,8 +39,8 @@ var callTransform = function(call) {
   var plainCall = call.toObject();
   var location = call.loc.coordinates;
   var mappedLocation = {
-    "longitude" : parseInt(location[0]),
-    "latitude"  : parseInt(location[1])
+    "longitude" : location[0],
+    "latitude"  : location[1]
   };
 
   plainCall.loc = mappedLocation;
@@ -77,6 +77,8 @@ app.put('/api/calls/:id', function(req, res) {
       "type"        : "Point",
       "coordinates" : [req.body.loc.longitude, req.body.loc.latitude]
     };
+    console.log(req.body.loc);
+    console.log(call);
     return call.save(function (err) {
       if (!err) {
         console.log("updated");
