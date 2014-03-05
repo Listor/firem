@@ -46,7 +46,9 @@ function program1(depth0,data) {
     'value': ("address.zip"),
     'id': ("zip")
   },hashTypes:{'value': "ID",'id': "STRING"},hashContexts:{'value': depth0,'id': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n    </div>\n    <div class=\"large-3 columns\">\n      <div class=\"right\">\n        <button class=\"tiny\">Reverse Geocode</button>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"large-2 columns\">\n       <label for=\"latitude\" class=\"right inline\">Comments</label>\n    </div>\n    <div class=\"large-10 columns\">\n      ");
+  data.buffer.push("\n    </div>\n    <div class=\"large-3 columns\">\n      <div class=\"right\">\n        <button class=\"tiny\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "reverse_geocode", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(">Reverse Geocode</button>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"large-2 columns\">\n       <label for=\"latitude\" class=\"right inline\">Comments</label>\n    </div>\n    <div class=\"large-10 columns\">\n      ");
   data.buffer.push(escapeExpression((helper = helpers.textarea || (depth0 && depth0.textarea),options={hash:{
     'value': ("comments")
   },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "textarea", options))));
