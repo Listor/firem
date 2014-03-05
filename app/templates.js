@@ -29,7 +29,9 @@ function program1(depth0,data) {
     'value': ("location.longitude"),
     'id': ("longitude")
   },hashTypes:{'value': "ID",'id': "STRING"},hashContexts:{'value': depth0,'id': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n    </div>\n    <div class=\"large-2 columns\">\n      <div class=\"right\">\n        <button class=\"tiny\">Geocode</button>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"large-2 columns\">\n      <label for=\"street\" class=\"right inline\">Street</label>\n    </div>\n    <div class=\"large-10 columns\">\n      ");
+  data.buffer.push("\n    </div>\n    <div class=\"large-2 columns\">\n      <div class=\"right\">\n        <button class=\"tiny\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "geocode", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(">Geocode Address</button>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"large-2 columns\">\n      <label for=\"street\" class=\"right inline\">Street</label>\n    </div>\n    <div class=\"large-10 columns\">\n      ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'value': ("address.street"),
     'id': ("street")
@@ -48,6 +50,10 @@ function program1(depth0,data) {
   data.buffer.push(escapeExpression((helper = helpers.textarea || (depth0 && depth0.textarea),options={hash:{
     'value': ("comments")
   },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "textarea", options))));
+  data.buffer.push("\n    </div>\n  </div>\n    <div class=\"row\">\n    <div class=\"large-2 columns\">\n       <label for=\"latitude\" class=\"right inline\">Tags</label>\n    </div>\n    <div class=\"large-10 columns\">\n      ");
+  data.buffer.push(escapeExpression((helper = helpers['multiple-select'] || (depth0 && depth0['multiple-select']),options={hash:{
+    'tags': ("tags")
+  },hashTypes:{'tags': "ID"},hashContexts:{'tags': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "multiple-select", options))));
   data.buffer.push("\n    </div>\n  </div>\n");
   return buffer;
   }
@@ -71,10 +77,7 @@ function program3(depth0,data) {
   data.buffer.push(escapeExpression((helper = helpers.bindAttr || (depth0 && depth0.bindAttr),options={hash:{
     'src': ("filepath")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "bindAttr", options))));
-  data.buffer.push(" controls=\"controls\">\n    Your browser does not support the <code>audio</code> element.\n  </audio>\n  ");
-  stack1 = helpers._triageMustache.call(depth0, "isDirty", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n");
+  data.buffer.push(" controls=\"controls\">\n    Your browser does not support the <code>audio</code> element.\n  </audio>\n");
   return buffer;
   }
 function program4(depth0,data) {
@@ -112,7 +115,10 @@ function program8(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push(": ");
   data.buffer.push(escapeExpression((helper = helpers.fdate || (depth0 && depth0.fdate),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["ID","STRING"],data:data},helper ? helper.call(depth0, "datetime", "MM/DD/YY HH:mm:ss", options) : helperMissing.call(depth0, "fdate", "datetime", "MM/DD/YY HH:mm:ss", options))));
-  data.buffer.push("</h2>\n  </div>\n  <div class=\"large-4 columns\">\n    <h3 class=\"subheader right\">");
+  data.buffer.push("</h2><br>");
+  stack1 = helpers._triageMustache.call(depth0, "inline_address", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n  </div>\n  <div class=\"large-4 columns\">\n    <h3 class=\"subheader right\">");
   data.buffer.push(escapeExpression((helper = helpers.callDate || (depth0 && depth0.callDate),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data},helper ? helper.call(depth0, "datetime", options) : helperMissing.call(depth0, "callDate", "datetime", options))));
   data.buffer.push("</h3>\n  </div>\n</div>\n\n");
   stack1 = helpers['if'].call(depth0, "isEditing", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
@@ -198,6 +204,16 @@ function program2(depth0,data) {
   stack1 = helpers.each.call(depth0, "call", "in", "controller.arrangedContent", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
+  
+});
+
+Ember.TEMPLATES["components/multiple-select"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  
+
+
+  data.buffer.push("<input type=\"hidden\" value=\"hecker, beep\" style=\"width:300px\" />");
   
 });
 

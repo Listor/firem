@@ -1,6 +1,6 @@
 <div class="row">
   <div class="large-8 columns">
-    <h2>{{dept}}: {{fdate datetime 'MM/DD/YY HH:mm:ss'}}</h2>
+    <h2>{{dept}}: {{fdate datetime 'MM/DD/YY HH:mm:ss'}}</h2><br>{{inline_address}}
   </div>
   <div class="large-4 columns">
     <h3 class="subheader right">{{callDate datetime}}</h3>
@@ -23,7 +23,7 @@
     </div>
     <div class="large-2 columns">
       <div class="right">
-        <button class="tiny">Geocode</button>
+        <button class="tiny" {{action 'geocode'}}>Geocode Address</button>
       </div>
     </div>
   </div>
@@ -70,6 +70,14 @@
       {{textarea value=comments}}
     </div>
   </div>
+    <div class="row">
+    <div class="large-2 columns">
+       <label for="latitude" class="right inline">Tags</label>
+    </div>
+    <div class="large-10 columns">
+      {{multiple-select tags=tags}}
+    </div>
+  </div>
 {{else}}
   Lat: {{location.latitude}}<br>
   Long: {{location.longitude}}<br>
@@ -82,7 +90,6 @@
   <audio {{bindAttr src=filepath }} controls="controls">
     Your browser does not support the <code>audio</code> element.
   </audio>
-  {{isDirty}}
 {{/if}}
 <hr>
 <div class="row">
