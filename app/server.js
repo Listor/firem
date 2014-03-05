@@ -47,6 +47,16 @@ var callTransform = function(call) {
   return plainCall;
 };
 
+app.get('/api/tags', function(req, res){
+  return CallModel.distinct('tags', function (err, results) {
+    if (!err) {
+      return res.send(results);
+    } else {
+      return console.error(err);
+    }
+  });
+});
+
 app.get('/api/calls', function(req, res){
   return CallModel.find().sort({'datetime': -1}).find(function (err, calls) {
     if (!err) {
@@ -73,6 +83,7 @@ app.put('/api/calls/:id', function(req, res) {
   return CallModel.findById(req.params.id, function(err, call) {
     call.comments = req.body.comments;
     call.address  = req.body.address;
+    call.tags     = req.body.tags;
     call.loc      = {
       "type"        : "Point",
       "coordinates" : [req.body.loc.longitude, req.body.loc.latitude]
