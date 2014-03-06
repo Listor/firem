@@ -1,108 +1,107 @@
 <div class="row">
-  <div class="large-8 columns">
-    <h2>{{dept}}: {{fdate datetime 'MM/DD/YY HH:mm:ss'}}</h2>
-  </div>
-  <div class="large-4 columns">
-    <h3 class="subheader right">{{callDate datetime}}</h3>
-  </div>
+	<div class="large-8 columns">
+		<h2>{{dept}}: {{fdate datetime 'MM/DD/YY HH:mm:ss'}}</h2>
+	</div>
+	<div class="large-4 columns">
+		<h3 class="subheader right">{{callDate datetime}}</h3>
+	</div>
 </div>
 
 {{#if isEditing}}
-  <div class="row">
-    <div class="large-2 columns">
-       <label for="latitude" class="right inline">Latitude</label>
-    </div>
-    <div class="large-3 columns">
-      {{input value=location.latitude id="latitude"}}
-    </div>
-    <div class="large-2 columns">
-      <label for="longitude" class="right inline">Longitude</label>
-    </div>
-    <div class="large-3 columns">
-      {{input value=location.longitude id="longitude"}}
-    </div>
-    <div class="large-2 columns">
-      <div class="right">
-        <button class="tiny" {{action 'geocode'}}>Geocode Address</button>
-      </div>
-    </div>
-  </div>
+	<div class="row">
+		<div class="large-2 columns">
+			 <label for="latitude" class="right inline">Latitude</label>
+		</div>
+		<div class="large-3 columns">
+			{{input value=location.latitude id="latitude"}}
+		</div>
+		<div class="large-2 columns">
+			<label for="longitude" class="right inline">Longitude</label>
+		</div>
+		<div class="large-3 columns">
+			{{input value=location.longitude id="longitude"}}
+		</div>
+		<div class="large-2 columns">
+			<div class="right">
+				<button class="tiny" {{action 'geocode'}}>Geocode Address</button>
+			</div>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="large-2 columns">
-      <label for="street" class="right inline">Street</label>
-    </div>
-    <div class="large-10 columns">
-      {{input value=address.street id="street"}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="columns large-2">
-      <label for="city" class="right inline">City</label>
-    </div>
-    <div class="large-4 columns">
-      <div class="row"> 
-        <div class="large-8 columns">
-           {{input value=address.city id="city"}}
-         </div>
-         <div class="large-4 columns">
-           {{view Ember.Select content=valid_states value=address.state}}
-         </div>
-            </div>
-     </div> <div class="columns large-1">
-      <label for="zip" class="right inline">Zip</label>
-    </div>
-    <div class="large-2 columns">
-      {{input value=address.zip id="zip"}}
-    </div>
-    <div class="large-3 columns">
-      <div class="right">
-        <button class="tiny" {{action 'reverse_geocode'}}>Reverse Geocode</button>
-      </div>
-    </div>
-  </div>
+	<div class="row">
+		<div class="large-2 columns">
+			<label for="street" class="right inline">Street</label>
+		</div>
+		<div class="large-10 columns">
+			{{input value=address.street id="street"}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="columns large-2">
+			<label for="city" class="right inline">City</label>
+		</div>
+		<div class="large-4 columns">
+			<div class="row"> 
+				<div class="large-8 columns">
+					 {{input value=address.city id="city"}}
+				 </div>
+				 <div class="large-4 columns">
+					 {{view Ember.Select content=valid_states value=address.state}}
+				 </div>
+						</div>
+		 </div> <div class="columns large-1">
+			<label for="zip" class="right inline">Zip</label>
+		</div>
+		<div class="large-2 columns">
+			{{input value=address.zip id="zip"}}
+		</div>
+		<div class="large-3 columns">
+			<div class="right">
+				<button class="tiny" {{action 'reverse_geocode'}}>Reverse Geocode<br>Address from Lat Long</button>
+			</div>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="large-2 columns">
-       <label for="latitude" class="right inline">Comments</label>
-    </div>
-    <div class="large-10 columns">
-      {{textarea value=comments}}
-    </div>
-  </div>
-    <div class="row">
-    <div class="large-2 columns">
-       <label for="latitude" class="right inline">Tags</label>
-    </div>
-    <div class="large-10 columns">
-      {{multiple-select currentlyTagged=tags src='/api/tags'}}
-    </div>
-  </div>
+	<div class="row">
+		<div class="large-2 columns">
+			 <label for="latitude" class="right inline">Comments</label>
+		</div>
+		<div class="large-10 columns">
+			{{textarea value=comments}}
+		</div>
+	</div>
+		<div class="row">
+		<div class="large-2 columns">
+			 <label for="latitude" class="right inline">Tags</label>
+		</div>
+		<div class="large-10 columns">
+			{{multiple-select currentlyTagged=tags src='/api/tags'}}
+		</div>
+	</div>
 {{else}}
-  Lat: {{location.latitude}}<br>
-  Long: {{location.longitude}}<br>
-  Comments: {{comments}}<br>
-  <ul>
-    {{#each tags}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
+    {{google-map lat=location.latitude long=location.longitude title="test"}}
+	Comments: {{comments}}<br>
+	<ul>
+		{{#each tags}}
+			<li>{{this}}</li>
+		{{/each}}
+	</ul>
 {{/if}}
 <hr>
 <div class="row">
-  <div class="large-6 columns">
-    <audio {{bindAttr src=filepath }} controls="controls">
-      Your browser does not support the <code>audio</code> element.
-    </audio>
-  </div>
-  <div class="large-6 columns">
-    {{#if isEditing}}
-      <div class="right">
-        <button {{action 'saveCall'}} class="success">Save</button>
-        <button {{action 'stopEditing'}} class="secondary">Cancel</button>
-      </div>
-    {{else}}
-      <button {{action 'startEditing'}} class="right">Edit</button>
-    {{/if}}
-  </div>
+	<div class="large-6 columns">
+		<audio {{bindAttr src=filepath }} controls="controls">
+			Your browser does not support the <code>audio</code> element.
+		</audio>
+	</div>
+	<div class="large-6 columns">
+		{{#if isEditing}}
+			<div class="right">
+				<button {{action 'saveCall'}} class="success">Save</button>
+				<button {{action 'stopEditing'}} class="secondary">Cancel</button>
+			</div>
+		{{else}}
+			<button {{action 'startEditing'}} class="right">Edit</button>
+		{{/if}}
+	</div>
 </div>
