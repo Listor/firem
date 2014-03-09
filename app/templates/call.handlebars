@@ -79,13 +79,35 @@
 		</div>
 	</div>
 {{else}}
-    {{google-map loc=location title="test"}}
-	Comments: {{comments}}<br>
-	<ul>
-		{{#each tags}}
-			<li>{{this}}</li>
-		{{/each}}
-	</ul>
+    <div class="row">
+    	<div class="large-5 columns">
+    	    <div class="row">
+		    	<div class="large-12 columns">
+		    		<h4>{{address.street}}</h4>
+	    		</div>
+    		</div>
+    		<div class="row">
+		    	<div class="large-12 columns">
+		    		<h4>{{address.city}}, {{address.state}} {{address.zip}}</h4>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="large-7 columns">
+    		Comments: {{comments}}
+    	</div>
+    </div>
+	<div class="row">
+		<div class="large-9 columns">
+		    {{google-map loc=location}}
+		</div>
+		<div class="large-3 columns">
+			<ul>
+				{{#each tags}}
+					<li>{{this}}</li>
+				{{/each}}
+			</ul>
+		</div>
+    </div>
 {{/if}}
 <hr>
 <div class="row">

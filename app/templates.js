@@ -69,27 +69,38 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   var buffer = '', stack1, helper, options;
-  data.buffer.push("\n    ");
-  data.buffer.push(escapeExpression((helper = helpers['google-map'] || (depth0 && depth0['google-map']),options={hash:{
-    'loc': ("location"),
-    'title': ("test")
-  },hashTypes:{'loc': "ID",'title': "STRING"},hashContexts:{'loc': depth0,'title': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "google-map", options))));
-  data.buffer.push("\n	Comments: ");
+  data.buffer.push("\n    <div class=\"row\">\n    	<div class=\"large-5 columns\">\n    	    <div class=\"row\">\n		    	<div class=\"large-12 columns\">\n		    		<h4>");
+  stack1 = helpers._triageMustache.call(depth0, "address.street", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</h4>\n	    		</div>\n    		</div>\n    		<div class=\"row\">\n		    	<div class=\"large-12 columns\">\n		    		<h4>");
+  stack1 = helpers._triageMustache.call(depth0, "address.city", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push(", ");
+  stack1 = helpers._triageMustache.call(depth0, "address.state", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push(" ");
+  stack1 = helpers._triageMustache.call(depth0, "address.zip", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</h4>\n	    		</div>\n    		</div>\n    	</div>\n    	<div class=\"large-7 columns\">\n    		Comments: ");
   stack1 = helpers._triageMustache.call(depth0, "comments", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("<br>\n	<ul>\n		");
+  data.buffer.push("\n    	</div>\n    </div>\n	<div class=\"row\">\n		<div class=\"large-9 columns\">\n		    ");
+  data.buffer.push(escapeExpression((helper = helpers['google-map'] || (depth0 && depth0['google-map']),options={hash:{
+    'loc': ("location")
+  },hashTypes:{'loc': "ID"},hashContexts:{'loc': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "google-map", options))));
+  data.buffer.push("\n		</div>\n		<div class=\"large-3 columns\">\n			<ul>\n				");
   stack1 = helpers.each.call(depth0, "tags", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n	</ul>\n");
+  data.buffer.push("\n			</ul>\n		</div>\n    </div>\n");
   return buffer;
   }
 function program4(depth0,data) {
   
   var buffer = '', stack1;
-  data.buffer.push("\n			<li>");
+  data.buffer.push("\n					<li>");
   stack1 = helpers._triageMustache.call(depth0, "", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</li>\n		");
+  data.buffer.push("</li>\n				");
   return buffer;
   }
 
