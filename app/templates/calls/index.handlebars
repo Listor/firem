@@ -1,4 +1,2 @@
 <h1>All Calls</h1>
-{{#each call in controller.arrangedContent}}
-  {{#link-to 'call' call._id}}{{call._id}}{{/link-to}}<br>
-{{/each}}
+{{ view App.CallsTable }}

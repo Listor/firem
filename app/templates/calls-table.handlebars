@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <th>Dept</th>
+            <th>Date</th>
+            <th>Comments</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each call in controller.arrangedContent}}
+                <tr>
+                    <td>{{call.dept}}</td>
+                    <td>{{fdate call.datetime 'MMM DD, YYYY'}}</td>
+                    <td>{{call.comments}}</td>
+                    <td>
+                        {{#link-to 'call' call._id}}
+                            View
+                        {{/link-to}}
+                    </td>
+                </tr>
+        {{/each}}
+    </tbody>
+</table>
