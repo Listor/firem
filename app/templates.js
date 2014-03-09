@@ -71,10 +71,9 @@ function program3(depth0,data) {
   var buffer = '', stack1, helper, options;
   data.buffer.push("\n    ");
   data.buffer.push(escapeExpression((helper = helpers['google-map'] || (depth0 && depth0['google-map']),options={hash:{
-    'lat': ("location.latitude"),
-    'long': ("location.longitude"),
+    'loc': ("location"),
     'title': ("test")
-  },hashTypes:{'lat': "ID",'long': "ID",'title': "STRING"},hashContexts:{'lat': depth0,'long': depth0,'title': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "google-map", options))));
+  },hashTypes:{'loc': "ID",'title': "STRING"},hashContexts:{'loc': depth0,'title': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "google-map", options))));
   data.buffer.push("\n	Comments: ");
   stack1 = helpers._triageMustache.call(depth0, "comments", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
@@ -222,10 +221,14 @@ function program2(depth0,data) {
 Ember.TEMPLATES["calls/index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', escapeExpression=this.escapeExpression;
+  var buffer = '', helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
   data.buffer.push("<h1>All Calls</h1>\n");
+  data.buffer.push(escapeExpression((helper = helpers['google-map'] || (depth0 && depth0['google-map']),options={hash:{
+    'loc': ("latest")
+  },hashTypes:{'loc': "ID"},hashContexts:{'loc': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "google-map", options))));
+  data.buffer.push("\n");
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "App.CallsTable", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
   return buffer;
   
