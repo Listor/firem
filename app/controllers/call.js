@@ -1,6 +1,6 @@
 App.CallController = Ember.ObjectController.extend({
   valid_states: ['IL', 'MO'],
-  isEditing : true,
+  isEditing : false,
   filepath: function() {
     return '/files/' + this.get('_id') + '.mp3';
   }.property('_id'),

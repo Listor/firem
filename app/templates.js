@@ -132,15 +132,6 @@ function program8(depth0,data) {
   data.buffer.push("</h2>\n	</div>\n	<div class=\"large-4 columns\">\n		<h3 class=\"subheader right\">");
   data.buffer.push(escapeExpression((helper = helpers.callDate || (depth0 && depth0.callDate),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data},helper ? helper.call(depth0, "datetime", options) : helperMissing.call(depth0, "callDate", "datetime", options))));
   data.buffer.push("</h3>\n	</div>\n</div>\n");
-  stack1 = helpers._triageMustache.call(depth0, "isDirty", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" : ");
-  stack1 = helpers._triageMustache.call(depth0, "address.isDirty", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" : ");
-  stack1 = helpers._triageMustache.call(depth0, "location.isDirty", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("<br>\n");
   stack1 = helpers['if'].call(depth0, "isEditing", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n<hr>\n<div class=\"row\">\n	<div class=\"large-6 columns\">\n		<audio ");
