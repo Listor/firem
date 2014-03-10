@@ -7,10 +7,6 @@ App.FireCall = Ember.Model.extend({
   'address' : Ember.belongsTo('App.Address', { key: 'address', embedded: true })
 });
 
-App.Tag = Ember.Model.extend({
-  'name'    : Ember.attr()
-});
-
 App.FireCall.adapter = Ember.RESTAdapter.create();
 App.FireCall.url = "/api/calls";
 App.FireCall.primaryKey = '_id';

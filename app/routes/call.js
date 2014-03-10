@@ -1,6 +1,10 @@
 App.CallRoute = Ember.Route.extend({
     model: function(fireCall) {
-        return App.FireCall.find(fireCall.fireCall_id);
+        var call = App.FireCall.find(fireCall.fireCall_id);
+        if(!call.get('address')) {
+            call.set('address', App.Address.create());
+        }
+        return call;
     },
     actions: {
         reverse_geocode: function() {
