@@ -10,7 +10,8 @@ App.GoogleMapComponent = Ember.Component.extend({
                     longAvg = longAvg + call.get('location.longitude');
                     calls.push({
                         latitude    : call.get('location.latitude'),
-                        longitude   : call.get('location.longitude')
+                        longitude   : call.get('location.longitude'),
+                        title       : call.get('comments') 
                     });
                 }
             });
@@ -36,7 +37,8 @@ App.GoogleMapComponent = Ember.Component.extend({
         calls.forEach(function(call) {
             new google.maps.Marker({
                 position    : new google.maps.LatLng(call.latitude, call.longitude),
-                map         : map
+                map         : map,
+                title       : call.title
             });
         })
     }
